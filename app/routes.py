@@ -58,12 +58,13 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username/Password')
-            return redirect(url_for('index'))
+            return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next = request.args.get('next')
         if not is_safe_url(next):
             return abort(400)
-        return redirect(url_for('index'))
+        flash('Succesful Login')
+        return redirect(next)
     return render_template('auth/login.html', title='Login', form=form)
 
 
