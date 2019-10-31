@@ -6,8 +6,10 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_socketio import SocketIO
 
+from config import ProductionConfig
+
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object(ProductionConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 socketio = SocketIO(app)
 
