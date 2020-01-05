@@ -55,6 +55,7 @@ class Device(db.Model):
     batt_cor = db.Column(db.Float)
     tipp_fac = db.Column(db.Float)
     ting_son = db.Column(db.Float) # dalam centi, tinggi sonar thd dasar sungai
+    son_res = db.Column(db.Integer, default=1000) # 1000 = mm, 100 = cm
 
     lokasi = relationship('Lokasi', back_populates='devices')
     latest_sampling = db.Column(db.DateTime)

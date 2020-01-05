@@ -54,6 +54,7 @@
 					<th class="uk-text-center">Kelembaban</th>
 					<th class="uk-text-center">Batt</th>
 					<th class="uk-text-center">Sinyal</th>
+					<th class="uk-text-center">On Sejak</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,14 +63,14 @@
 			<td class="uk-text-right">{% if device.tipe == 'arr' %}{{ i.rain }}{% elif device.tipe == 'awlr' %}{{ '%.2f'|format((i.wlev or 0)*0.01|float) }}{% endif %}</td>
 			<td class="uk-text-right">{{ '%0.1f'|format(i.temp|float) }}</td><td class="uk-text-right">{{ '%0.1f'|format(i.humi|float) }}</td>
 			<td class="uk-text-right">{{ '%0.1f'|format(i.batt|float) }}</td>
-			<td class="uk-text-right">{{ i.sq }}</td></tr>
+			<td class="uk-text-right">{{ i.sq }}</td>
+			<td class="text-right">{{ i.up_s }}</td>
+		</tr>
     {% endfor %}
 			</tbody>
     </table>
   </div>
   <div class="col col-md-3">
-		<h3>Data Terakhir</h3>
-    {{ month_list|length }}
     <h3>Konfigurasi 
       <a class="btn btn-outline-primary btn-sm float-right" data-toggle="collapse" role="button" href=".form-edit" aria-expanded="true" aria-controls="form-edit"><span uk-toggle="target: .form-edit" class="uk-align-right">edit</span></a></h3>
     <div {% if form.errors %}hidden{% endif %} class="show form-edit">
@@ -104,14 +105,20 @@
         <div class="form-group">
 					<label>Lokasi: {{ form.lokasi_id(class="form-control") }}</label>
 				</div>
-				<div class="form-group">
             {% if device.tipe == 'arr' %}
+				<div class="form-group">
           Tipping Factor: <span class="float-right">{{ form.tipp_fac(size=3) }} mm</span>
+				</div>
             {% endif %}
             {% if device.tipe == 'awlr' %}
-          Tinggi Sonar: <span class="float-right">{{ form.ting_son(size=3) }} cm</span>
-            {% endif %}
+						
+				<div class="form-group">
+					Resolusi Sonar: <span class="float-right">{{ form.son_res(class="form-control") }}</span>
 				</div>
+				<div class="form-group">
+          Tinggi Sonar: <span class="float-right">{{ form.ting_son(size=3) }} cm</span>
+				</div>
+            {% endif %}
 				<p title="Koreksi temperatur, bisa berisi angka minus, jika hasil baca dari logger nilainya lebih tinggi dari nilai acuan"><strong>Koreksi</strong></p>
 					<div class="form-group">Suhu (&deg;C)<span class="float-right">{{ form.temp_cor(size=2) }}
               </div>

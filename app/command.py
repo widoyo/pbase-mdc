@@ -243,7 +243,8 @@ def raw2periodic(raw):
     if raw.get('distance'):
         # dianggap distance dalam milimeter
         # 'distance' MB7366(mm) di centimeterkan
-        wlev = (device.ting_son or 100) - raw.get('distance') * 0.1
+        resolusi_sonar = device.son_res == 1000 and 0.1 or 1
+        wlev = (device.ting_son or 1000) - raw.get('distance') * resolusi_sonar
         obj.update({'wlev': wlev})
     time_to = {'sampling': 'sampling',
                'up_since': 'up_s',

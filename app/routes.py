@@ -63,7 +63,6 @@ def login():
         next = request.args.get('next')
         if not is_safe_url(next):
             return abort(400)
-        flash('Succesful Login')
         return redirect(next)
     return render_template('auth/login.html', title='Login', form=form)
 

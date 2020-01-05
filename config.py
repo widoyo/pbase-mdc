@@ -7,7 +7,7 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'golekono-dewe-sak-temune'
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     BWSSUL2BOT_TOKEN = '705378977:AAEPkaIYvMLEMiJWOtSNG8P-8RPO4IBPDf8'
     BWS_SUL2_TELEMETRY_GROUP = -301074579
 

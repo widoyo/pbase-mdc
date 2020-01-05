@@ -12,11 +12,11 @@
   <div class="col">
     <form style="padding: 0px" method="POST" action="">
       {{ form.hidden_tag() }}
-      {{ render_field(form.nama, class='uk-input', size=15, autofocus=True) }}
-      <i>Contoh: <b>ARR/MRG DAS Bolango Bone Boidu</b></i>
+      {{ render_field(form.nama, class='uk-input', size=35, autofocus=True) }}
+			<i>Contoh: </i>
       <br><br>
       {{ render_field(form.ll, class='uk-input', id='ll') }}
-      <i>Contoh: <b>0.7085167,122.8554833</b></i>
+      <i>Contoh: <b>1.3985167,124.8554833</b></i>
       <br><br>
       {{ form.submit(class="btn btn-primary") }} <a href="../" class="">batal</a>
     </form>
@@ -25,7 +25,7 @@
   </div>
 </div>
     <script>
-	var mymap = L.map('mymap').setView([0.68, 122.5], 10);
+	var mymap = L.map('mymap').setView([1.39, 124.8], 10);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoid2lkb3lvIiwiYSI6ImNqcTNmNGh5NjFlMGk0Mm9iamJxdXIxaHUifQ.hxfPpTyy8g60K9baKtbvRw', {
 		maxZoom: 18,

@@ -27,3 +27,6 @@ class LoggerSettingForm(FlaskForm):
     batt_cor = DecimalField('Koreksi Baterai')
     tipp_fac = DecimalField('Tipping Factor')
     ting_son = DecimalField('Tinggi Sonar (cm)')
+    son_res = SelectField('Resolusi Sonar', choices=[(1000, 'Milimeter'),
+                                                     (100, 'Centimeter')],
+                                                     coerce=int)
